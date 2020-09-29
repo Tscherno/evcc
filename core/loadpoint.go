@@ -206,6 +206,16 @@ func (lp *LoadPoint) SetTargetSoC(targetSoC int) {
 	}
 }
 
+// ChargeEnable enables/disables charging
+func (lp *LoadPoint) ChargeEnable(enable bool) error {
+	var current int64 = 0
+	if enable {
+		current = lp.MinCurrent
+	}
+
+	return lp.handler.Ramp(current, true)
+}
+
 // requestUpdate requests site to update this loadpoint
 func (lp *LoadPoint) requestUpdate() {
 	select {
