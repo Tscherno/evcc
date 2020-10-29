@@ -68,6 +68,9 @@
       color: #ffc107!important;
       font-weight: bold!important;
     }
+    .bg-warning-remainder {
+      opacity: 0.25;
+    }
   </style>
 </head>
 <body>
@@ -424,6 +427,16 @@ loadpoints:
         'text-secondary': !state.connected,
         'bg-warning': state.connected && minSoCActive,
       }" v-bind:style="{width: socChargeDisplayWidth+'%'}">{{socChargeDisplayValue}}</div>
+    <div class="progress-bar" role="progressbar" v-bind:class="{
+        'progress-bar-striped': state.charging,
+        'progress-bar-animated': state.charging,
+        'bg-warning': true,
+        'bg-warning-remainder': true,
+      }" v-bind:style="{width: (50-socChargeDisplayWidth)+'%', 'background-color':'#e9ecef'}"></div>
+    <!-- <div class="progress-bar" role="progressbar" v-bind:class="{
+        'bg-warning': true,
+      }" v-bind:style="{width: '2px'}"></div> -->
+    </div>
   </div>
 </div>
 </script>
