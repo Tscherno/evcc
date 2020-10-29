@@ -60,6 +60,14 @@
       color: #6c757d!important;
       text-decoration: none;
     }
+    /* .btn-temporary-active:not(:hover) { */
+    .btn-temporary-active {
+      /* color: #212529!important; */
+      /* color: #ffffff!important;
+      background-color: #ffc107!important; */
+      color: #ffc107!important;
+      font-weight: bold!important;
+    }
   </style>
 </head>
 <body>
@@ -377,7 +385,7 @@ loadpoints:
   <label class="btn btn-outline-primary" v-bind:class="{active:mode=='off',first:!caption}">
     <input type="radio" value="off" v-on:click="targetMode('off')">Stop
   </label>
-  <label class="btn btn-outline-primary" v-bind:class="{active:mode=='now'}">
+  <label class="btn btn-outline-primary" v-bind:class="{active:mode=='now','btn-temporary-active':true}">
     <input type="radio" value="now" v-on:click="targetMode('now')">Sofort
   </label>
   <label class="btn btn-outline-primary" v-bind:class="{active:mode=='minpv'}" v-if="pv">
@@ -399,7 +407,7 @@ loadpoints:
     Ladeziel
   </label>
   <label class="btn btn-outline-primary" v-for="(level,id) in levelsOrDefault" v-bind:level="level" :id="id"
-    :class="{active:soc==level,first:!caption&&id==0}">
+    :class="{active:soc==level,first:!caption&&id==0,'btn-temporary-active':50==level}">
     <input type="radio" v-bind:value="level" v-on:click="targetSoC(level)">{{level}}%
   </label>
 </div>

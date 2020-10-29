@@ -410,6 +410,12 @@ Vue.component("soc", {
         return []; // disabled, or use 30, 50, 80, 100
       }
       return this.levels;
+    },
+    minSoCActive: function () {
+      return true;
+      // return this.state.connected && (
+      //   this.state.minSoC > 0 && this.state.socCharge < this.state.minSoC
+      // )
     }
   },
   methods: {
